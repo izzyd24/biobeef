@@ -55,7 +55,7 @@
 // };
 // Plotly.newPlot("plotArea", data, layout);
 
-// // example 12.1.1 map function
+// example 12.2.1 map function
 // var numbers = [1,2,3,4,5];
 // // set a new var = previous var, then use map function
 // // use anynonymous function inside, with no name, param of num
@@ -69,31 +69,55 @@
 
 // example to extract 'population' of each city 
 // var cities is the given array of objects with properties: rank, city, state, increase, population
-var cities = [
-    {
-      "Rank": 1,
-      "City": "San Antonio ",
-      "State": "Texas",
-      "Increase_from_2016": "24208",
-      "population": "1511946"
-    },
-    {
-      "Rank": 2,
-      "City": "Phoenix ",
-      "State": "Arizona",
-      "Increase_from_2016": "24036",
-      "population": "1626078"
-    },
-    {
-      "Rank": 3,
-      "City": "Dallas",
-      "State": "Texas",
-      "Increase_from_2016": "18935",
-      "population": "1341075"
-    }
-];
-// map function to get the city populations from the previous array of objects
-var cityPop = cities.map(function(populationFinder){
-    return populationFinder.population;
-});
-console.log(cityPop);
+// var cities = [
+//     {
+//       "Rank": 1,
+//       "City": "San Antonio ",
+//       "State": "Texas",
+//       "Increase_from_2016": "24208",
+//       "population": "1511946"
+//     },
+//     {
+//       "Rank": 2,
+//       "City": "Phoenix ",
+//       "State": "Arizona",
+//       "Increase_from_2016": "24036",
+//       "population": "1626078"
+//     },
+//     {
+//       "Rank": 3,
+//       "City": "Dallas",
+//       "State": "Texas",
+//       "Increase_from_2016": "18935",
+//       "population": "1341075"
+//     }
+// ];
+// // map function to get the city populations from the previous array of objects
+// var cityPop = cities.map(function(populationFinder){
+//     return populationFinder.population;
+// });
+// console.log(cityPop);
+
+// example 12.1.1 filter function
+// var numbers = [1,2,3,4,5];
+
+// var larger = numbers.filter(function(num){
+//     // returns a number larger than the original element in the array
+//     // map transforms every element in original array, filter returns values that meets criteria
+//     return num > 1;
+// });
+
+// console.log(larger);
+
+// example asking to filter through words for species starting with letter s 
+// var words = ['seal', 'dog', 'scorpion', 'orangutan', 'salamander']; 
+
+// var startWithS = words.filter((wordsFinder) => wordsFinder.startsWith("s"));
+
+// console.log(startWithS);
+
+// slice practice 12.2.1
+// want to return the first 3 elements in the array
+var words = ['seal', 'dog', 'scorpion', 'orangutan', 'salamander'];
+var slice1 = words.slice(0,3);
+console.log(slice1);
