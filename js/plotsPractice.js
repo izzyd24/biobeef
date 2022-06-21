@@ -142,3 +142,4 @@ d3.json(url).then(spaceXResults => console.log(spaceXResults[0].location.latitud
 
 // use map to print only lat and lng cords of each station
 // d3.json(url).then(x => console.log(x)).map(location.longitude);
+
