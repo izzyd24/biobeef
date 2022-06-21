@@ -37,3 +37,5 @@ var layout = {
 Plotly.newPlot("bar-plot", data, layout);
 
 // Same dataset, practice creating a bar chart for seven largest cities by population
+
+

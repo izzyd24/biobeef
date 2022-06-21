@@ -121,3 +121,11 @@
 // var words = ['seal', 'dog', 'scorpion', 'orangutan', 'salamander'];
 // var slice1 = words.slice(0,3);
 // console.log(slice1);
+
+// 12.3.1 Insepct API call w/ D3.json()
+
+// set variable to open SpaceX url
+const url = "https://api.spacexdata.com/v2/launchpads";
+// places call to SpaceX api, retrieves data, prints to console 
+d3.json(url).then(receivedData => console.log(receivedData));
+
