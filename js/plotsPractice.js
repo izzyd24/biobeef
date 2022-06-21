@@ -98,7 +98,7 @@
 // });
 // console.log(cityPop);
 
-// example 12.1.1 filter function
+// example 12.2.1 filter function
 // var numbers = [1,2,3,4,5];
 
 // var larger = numbers.filter(function(num){
@@ -118,6 +118,6 @@
 
 // slice practice 12.2.1
 // want to return the first 3 elements in the array
-var words = ['seal', 'dog', 'scorpion', 'orangutan', 'salamander'];
-var slice1 = words.slice(0,3);
-console.log(slice1);
+// var words = ['seal', 'dog', 'scorpion', 'orangutan', 'salamander'];
+// var slice1 = words.slice(0,3);
+// console.log(slice1);
