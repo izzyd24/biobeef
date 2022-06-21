@@ -128,4 +128,17 @@
 const url = "https://api.spacexdata.com/v2/launchpads";
 // places call to SpaceX api, retrieves data, prints to console 
 d3.json(url).then(receivedData => console.log(receivedData));
+// output shows 6 objects returned
+// in each obj, we see attempted launches, details, full name, id, etc.
 
+// bring the first index element details only
+d3.json(url).then(spaceXResults => console.log(spaceXResults[0]));
+
+// retrieve the 1st element, full name property only
+d3.json(url).then(spaceXResults => console.log(spaceXResults[0].full_name));
+
+// get deeper... within 1st element, find the location key, retrieve the value for lat
+d3.json(url).then(spaceXResults => console.log(spaceXResults[0].location.latitude));
+
+// use map to print only lat and lng cords of each station
+// d3.json(url).then(x => console.log(x)).map(location.longitude);
