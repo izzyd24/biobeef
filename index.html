@@ -23,12 +23,18 @@
         <div class="well">
           <h5>Test Subject ID No.:</h5>
           <!-- <select id="selDataset"></select> -->
+          <!-- dropdown menu -->
+          <!-- select tag to indicate dropdown menu, id selDataset-->
+          <!--tag as attribute onChnage, associated with the function optionChanged-->
+          <!--optionChanged called when changes takes place in dropdown, argument this.value-->
+          <!--this.value returns value of attr. of current dropdown menu selection-->
           <select id="selDataset" onchange="optionChanged(this.value)"></select>
         </div>
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Demographic Info</h3>
           </div>
+          <!-- information panel demographics element-->
           <div id="sample-metadata" class="panel-body"></div>
         </div>
       </div>
@@ -48,7 +54,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="plots.js"></script>
+  <script src="js/plots.js"></script>
 
 </body>
 
