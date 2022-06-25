@@ -85,16 +85,21 @@ const sampleVal =
 // 8. Create the trace for the bar chart. 
 // var barData = [
       
+// var trace = {
+
+
+// }
 
 // ];
 // 9. Create the layout for the bar chart. 
 // var barLayout = {
-  // title: "Luncheon Survey",
+  // title: "Belly Button Biodiversity Dashboard",
+  // x vals = sample_values
   //     xaxis: {title: "Food Option"},
   //     yaxis: {title: "Number of Respondents"}
 
 // plot the bar chart
-Plotly.newPlot("plotArea", [yticks], layout)
+Plotly.newPlot("plotArea", [trace], layout)
 
 // };
 
