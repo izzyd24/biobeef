@@ -59,16 +59,16 @@ function buildCharts(sample) {
 // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("js/samples.json").then((data) => {
     // 3. Create a variable that holds the samples array. 
-    const samplesHolder = data.samplesHolder; 
+    var samplesHolder = data.samplesHolder; 
     // 4. Create a variable that filters the samples for the object with the desired sample number
     // using filter through arrow function
-    const sampleObjHolder = samplesHolder.filter(obj => obj.id == sample);
+    var sampleObjHolder = samplesHolder.filter(sampleObj => sampleObj.id == sample);
     // 5. Create a variable that holds the first sample in the array.
-    const results = sampleObjHolder[0];
+    var results = sampleObjHolder[0];
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    const otuId = results.otu_ids;
-    const otuLabel = results.otu_labels;
-    const sampleVal = results.sample_values; 
+    var otuId = results.otu_ids;
+    var otuLabel = results.otu_labels;
+    var sampleVal = results.sample_values; 
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
