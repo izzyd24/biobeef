@@ -95,7 +95,7 @@ function buildCharts(sample) {
     }];
 
     // necessary to do this? 
-    var trace = [barData];
+    //var trace = [barData];
 
     // 9. Create the layout for the bar chart. 
     var barLayout = {
@@ -106,7 +106,7 @@ function buildCharts(sample) {
     yaxis: {title: "Otu Ids"}};
 
     // plot the bar chart
-    Plotly.newPlot("bar", [trace], barLayout);
+    Plotly.newPlot("bar", barData, barLayout);
 
   // D2: BUBBLE CHART CREATION
     // 1. Create the trace for the bubble chart.
@@ -138,7 +138,7 @@ function buildCharts(sample) {
     };
 
     // 3. Use Plotly to plot the data with the layout.
-    Plotly.newPlot("bubble", [bubbleData], bubbleLayout);   
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout);   
 
   // D3: Gauge chart
   // create var to filter metadata array for obj id matches id # in buildCharts
@@ -165,13 +165,14 @@ function buildCharts(sample) {
         ]
       }
     };
-    var traceG = [dataG];
+    //var traceG = [dataG];
+    
     // create var to hold 1st sample in array
     var gaugeLayout = {
       // or should use as in documentation: https://plotly.com/javascript/gauge-charts/
       // width: 600, height: 500, margin: { t: 0, b: 0 }
       automargin: true
       };
-    Plotly.newPlot("gauge", [traceG], gaugeLayout);
+    Plotly.newPlot("gauge", dataG, gaugeLayout);
   });
 };
