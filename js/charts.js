@@ -61,7 +61,7 @@ function buildCharts(sample) {
   d3.json("js/samples.json").then((data) => {
     // 3. Create a variable that holds the samples array. 
     var samples = data.samples; 
-    console.log(data);
+    //console.log(data);
     // 4. Create a variable that filters the samples for the object with the desired sample number
     // using filter through arrow function
     var sampleObjHolder = samples.filter(samples => samples.id == sample);
@@ -76,10 +76,7 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     // so the otu_ids with the most bacteria are last. 
     // used arrow function AND sliced 0-10 as requested
-    var yticks = otuId.slice(0,10).reverse().map(function(a){
-      // equivalent of toString
-    return `${a}`
-  });
+    var yticks = otuId.map(a=> "OTU" + a).slice(0,10).reverse();
 
     // need to make xticks?
     var xticks = sampleVal.slice(0,10).reverse();
