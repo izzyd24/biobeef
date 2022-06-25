@@ -58,7 +58,7 @@ function buildMetadata(sample) {
 function buildCharts(sample) {
 // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
-  // 3. Create a variable that holds the samples array. 
+    // 3. Create a variable that holds the samples array. 
     const samplesHolder = data.samplesHolder; 
     // 4. Create a variable that filters the samples for the object with the desired sample number
     // using filter through arrow function
@@ -83,70 +83,79 @@ function buildCharts(sample) {
     var labels = otuLabel.slice(0,10).reverse();
 
     // 8. Create the trace for the bar chart. 
-    var barData = {
+    var barData = [{
       x: xticks,
       y: yticks,
       type: 'bar',
       orientation: 'h',
       text: labels
-    };
+    }];
 
     // necessary to do this? 
     var trace = {barData};
 
     // 9. Create the layout for the bar chart. 
     var barLayout = {
-    title: "Belly Button Biodiversity Dashboard",
+    title: "Top Ten Bacteria Cultures Found",
     //x vals = sample_values
     //y vals = otu_ids
     xaxis: {title: "Sample Values"},
-    yaxis: {title: "Otu Ids"};
+    yaxis: {title: "Otu Ids"}};
 
     // plot the bar chart
     Plotly.newPlot("bar", [trace], barLayout);
 
   // D2: BUBBLE CHART CREATION
     // 1. Create the trace for the bubble chart.
-    var bubbleData = {
+    var bubbleData = [{
       x: otuId,
       y: sampleVal,
       text: otuLabel,
       mode: 'markers',
       marker: {
         size: sampleVals,
-        color: otuIDs
+        color: otuIDs,
+        // documentation: https://plotly.com/javascript/colorscales/
+        colorscale: 'Picnic'
       }
-    };
+    }];
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
       title: "Bacteria Cultures Per Sample",
       xaxis: {title: "OTU ID"},
-      showlegend: false
+      // showlegend or use hovermode??
+      //Documentation: https://plotly.com/javascript/bubble-charts/#hover-text-on-bubble-charts
+      //showlegend: false
+      hovermode: 'closest',
+      // to resize automatically
+      // Documentation: https://plotly.com/python/setting-graph-size/
+      // Would like to refactor as a live adjust graph size through a function
+      automargin: true
     };
 
     // 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", [bubbleData], bubbleLayout);   
 
-  // D3: Gauge chart
-    var gaugeData = {
-      title: {text: "Belly Button Washing Frequency<br>Scrubs per Week"},
-        type: "indicator",
-        mode: "gauge+number",
-        gauge: {
-          axis: {range: [0,10]},
-          steps: [
-            {range: [0,2], color:"#ea2c2c"},
-            {range: [2,4], color:"#ea822c"},
-            {range: [4,6], color:"#ee9c00"},
-            {range: [6,8], color:"#eecc00"},
-            {range: [8,10], color:"#d4ee00"}
-          ]
-        }
-      };
-      var gaugeLayout = {
-        width: 600, height: 450, margin: {t: 0, b: 0}
-      };
-      Plotly.newPlot("gauge", [gaugeData], gaugeLayout);
-    });
-  };
+  // // D3: Gauge chart
+  //   var gaugeData = {
+  //     title: {text: "Belly Button Washing Frequency<br>Scrubs per Week"},
+  //       type: "indicator",
+  //       mode: "gauge+number",
+  //       gauge: {
+  //         axis: {range: [0,10]},
+  //         steps: [
+  //           {range: [0,2], color:"#ea2c2c"},
+  //           {range: [2,4], color:"#ea822c"},
+  //           {range: [4,6], color:"#ee9c00"},
+  //           {range: [6,8], color:"#eecc00"},
+  //           {range: [8,10], color:"#d4ee00"}
+  //         ]
+  //       }
+  //     };
+  //     var gaugeLayout = {
+  //       width: 600, height: 450, margin: {t: 0, b: 0}
+  //     };
+  //     Plotly.newPlot("gauge", [gaugeData], gaugeLayout);
+  //   });
+  // };
