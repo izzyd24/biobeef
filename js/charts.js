@@ -93,7 +93,7 @@ function buildCharts(sample) {
     }];
 
     // necessary to do this? 
-    var trace = {barData};
+    var trace = [barData];
 
     // 9. Create the layout for the bar chart. 
     var barLayout = {
@@ -163,7 +163,7 @@ function buildCharts(sample) {
         ]
       }
     };
-    var traceG = {dataG};
+    var traceG = [dataG];
     // create var to hold 1st sample in array
     var gaugeLayout = {
       // or should use as in documentation: https://plotly.com/javascript/gauge-charts/

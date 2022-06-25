@@ -1,0 +1,29 @@
+/*
+D4: 
+Want to add 3 changes to the dashboard: 
+1. background color to webpage
+2. image to jumbotron
+3. custom font
+When the dashboard is first opened in a browser, 
+ID 940’s data should be displayed in the dashboard, 
+and the three charts should be working according to their requirements
++ ...
+When a sample is selected, the dashboard should display the data
+in the panel and all three charts according to their requirements
+*/
+
+body {
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+}
+ 
+.tag {
+    font-family: inherit; 
+    font-size: 1rem;
+}  
+
+.jumbotron {
+    background-image: url("../images/bacteria.jpg");
+    background-size: 100% 100%;
+    text-align: center;
+}
