@@ -57,73 +57,96 @@ function buildMetadata(sample) {
 // 1. Create the function.
 function buildCharts(sample) {
 // 2. Use d3.json to load and retrieve the samples.json file 
-d3.json("samples.json").then((data) => {
-
+  d3.json("samples.json").then((data) => {
   // 3. Create a variable that holds the samples array. 
-  const samplesHolder = data.samplesHolder; 
-  // 4. Create a variable that filters the samples for the object with the desired sample number.
-  const sampleObjHolder = data.sampleObjHolder;
-  // 5. Create a variable that holds the first sample in the array.
-  const sampleOne =
-  
+    const samplesHolder = data.samplesHolder; 
+    // 4. Create a variable that filters the samples for the object with the desired sample number
+    // using filter through arrow function
+    const sampleObjHolder = samplesHolder.filter(obj => obj.id == sample);
+    // 5. Create a variable that holds the first sample in the array.
+    const results = sampleObjHolder[0];
+    // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
+    const otuId = results.otu_ids;
+    const otuLabel = results.otu_labels;
+    const sampleVal = results.sample_values; 
 
-// 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-const otuId = 
-const otuLabel =
-const sampleVal = 
+    // 7. Create the yticks for the bar chart.
+    // Hint: Get the the top 10 otu_ids and map them in descending order  
+    // so the otu_ids with the most bacteria are last. 
+    // used arrow function AND sliced 0-10 as requested
+    var yticks = otuId.slice(0,10).reverse().map(function (a){
+    return {a}});
+    // need to make xticks?
+    var xticks = sampleVal.slice(0,10).reverse();
 
+    // need to do same for labels?
+    var labels = otuLabel.slice(0,10).reverse();
 
-// 7. Create the yticks for the bar chart.
-// Hint: Get the the top 10 otu_ids and map them in descending order  
-// so the otu_ids with the most bacteria are last. 
+    // 8. Create the trace for the bar chart. 
+    var barData = {
+      x: xticks,
+      y: yticks,
+      type: 'bar',
+      orientation: 'h',
+      text: labels
+    };
 
-// var yticks = 
+    // necessary to do this? 
+    var trace = {barData};
 
+    // 9. Create the layout for the bar chart. 
+    var barLayout = {
+    title: "Belly Button Biodiversity Dashboard",
+    //x vals = sample_values
+    //y vals = otu_ids
+    xaxis: {title: "Sample Values"},
+    yaxis: {title: "Otu Ids"};
 
-// 8. Create the trace for the bar chart. 
-// var barData = [
-      
-// var trace = {
+    // plot the bar chart
+    Plotly.newPlot("bar", [trace], barLayout);
 
+  // D2: BUBBLE CHART CREATION
+    // 1. Create the trace for the bubble chart.
+    var bubbleData = {
+      x: otuId,
+      y: sampleVal,
+      text: otuLabel,
+      mode: 'markers',
+      marker: {
+        size: sampleVals,
+        color: otuIDs
+      }
+    };
 
-// }
+    // 2. Create the layout for the bubble chart.
+    var bubbleLayout = {
+      title: "Bacteria Cultures Per Sample",
+      xaxis: {title: "OTU ID"},
+      showlegend: false
+    };
 
-// ];
-// 9. Create the layout for the bar chart. 
-// var barLayout = {
-  // title: "Belly Button Biodiversity Dashboard",
-  // x vals = sample_values
-  // y vals = otu_ids
-  //     xaxis: {title: "Sample Values"},
-  //     yaxis: {title: "Otu Ids"}
+    // 3. Use Plotly to plot the data with the layout.
+    Plotly.newPlot("bubble", [bubbleData], bubbleLayout);   
 
-// plot the bar chart
-Plotly.newPlot("plotArea", [trace], layout)
-
-// };
-
-// D2: BUBBLE CHART CREATION
-// 10. Use Plotly to plot the data with the layout. 
-Plotly.newPlot(); 
-// 1. Create the trace for the bubble chart.
-var bubbleData = [
-   
-];
-
-// 2. Create the layout for the bubble chart.
-var bubbleLayout = {
-  
-};
-
-// 3. Use Plotly to plot the data with the layout.
-Plotly.newPlot(); 
-});
-}
-
-
-// D3: buildCharts FUNCTION
-
-
-
-//   });
-// }
+  // D3: Gauge chart
+    var gaugeData = {
+      title: {text: "Belly Button Washing Frequency<br>Scrubs per Week"},
+        type: "indicator",
+        mode: "gauge+number",
+        gauge: {
+          axis: {range: [0,10]},
+          steps: [
+            {range: [0,2], color:"#ea2c2c"},
+            {range: [2,4], color:"#ea822c"},
+            {range: [4,6], color:"#ee9c00"},
+            {range: [6,8], color:"#eecc00"},
+            {range: [8,10], color:"#d4ee00"}
+          ]
+        }
+      };
+      var gaugeLayout = {
+        width: 600, height: 450, margin: {t: 0, b: 0}
+      };
+      Plotly.newPlot("gauge", [gaugeData], gaugeLayout);
+    });
+  };
