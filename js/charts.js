@@ -64,7 +64,7 @@ function buildCharts(sample) {
     console.log(data);
     // 4. Create a variable that filters the samples for the object with the desired sample number
     // using filter through arrow function
-    var sampleObjHolder = samples.filter(sampleObj => sampleObj.id == sample);
+    var sampleObjHolder = samples.filter(samples => samples.id == sample);
     // 5. Create a variable that holds the first sample in the array.
     var results = sampleObjHolder[0];
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
@@ -76,7 +76,7 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     // so the otu_ids with the most bacteria are last. 
     // used arrow function AND sliced 0-10 as requested
-    var yticks = otuId.slice(0,10).reverse().map(function (a){
+    var yticks = otuId.slice(0,10).reverse().map(function(a){
     return {a}});
 
     // need to make xticks?
@@ -166,13 +166,14 @@ function buildCharts(sample) {
       }
     };
     //var traceG = [dataG];
-    
+
     // create var to hold 1st sample in array
     var gaugeLayout = {
       // or should use as in documentation: https://plotly.com/javascript/gauge-charts/
-      // width: 600, height: 500, margin: { t: 0, b: 0 }
+      //width: 600, height: 500, margin: { t: 0, b: 0 }
       automargin: true
       };
+
     Plotly.newPlot("gauge", dataG, gaugeLayout);
   });
 };
