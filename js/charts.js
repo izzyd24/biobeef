@@ -146,7 +146,7 @@ function buildCharts(sample) {
     var wfreqs = resultG.wfreq;
 
     // create the trace 
-    var gaugeData = {
+    var dataG = {
       title: {text: "<b> Belly Button Washing Frequency </b> <br></br> Scrubs Per Week"},
       value: wfreqs,
       type: "indicator",
@@ -155,17 +155,19 @@ function buildCharts(sample) {
         axis: {range: [0,10]},
         bar: {color: "black"},
         steps: [
-          {range: [0,2], color:"red"},
-          {range: [2,4], color:"orange"},
-          {range: [4,6], color:"yellow"},
-          {range: [6,8], color:"green"},
-          {range: [8,10], color:"blue"}
+          {range: [0,2], color:"lightcoral"},
+          {range: [2,4], color:"darkorange"},
+          {range: [4,6], color:"yellowgreen"},
+          {range: [6,8], color:"skyblue"},
+          {range: [8,10], color:"mediumslateblue"}
         ]
       }
     };
-    var traceG = {gaugeData};
+    var traceG = {dataG};
     // create var to hold 1st sample in array
     var gaugeLayout = {
+      // or should use as in documentation: https://plotly.com/javascript/gauge-charts/
+      // width: 600, height: 500, margin: { t: 0, b: 0 }
       automargin: true
       };
     Plotly.newPlot("gauge", [traceG], gaugeLayout);
