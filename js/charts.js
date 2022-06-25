@@ -53,21 +53,19 @@ function buildMetadata(sample) {
   });
 }
 
-// // 1. Create the buildCharts function.
+// D1: buildCharts FUNCTION
+// 1. Create the function.
 function buildCharts(sample) {
 // 2. Use d3.json to load and retrieve the samples.json file 
 d3.json("samples.json").then((data) => {
 
-
-// 3. Create a variable that holds the samples array. 
-const sampleArrayHolder = sample.something; 
-
-// 4. Create a variable that filters the samples for the object with the desired sample number.
-const sampleObjHolder = 
-
-// 5. Create a variable that holds the first sample in the array.
-const sampleArrayOne =
-
+  // 3. Create a variable that holds the samples array. 
+  const samplesHolder = data.samplesHolder; 
+  // 4. Create a variable that filters the samples for the object with the desired sample number.
+  const sampleObjHolder = data.sampleObjHolder;
+  // 5. Create a variable that holds the first sample in the array.
+  const sampleOne =
+  
 
 // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
 const otuId = 
@@ -95,8 +93,9 @@ const sampleVal =
 // var barLayout = {
   // title: "Belly Button Biodiversity Dashboard",
   // x vals = sample_values
-  //     xaxis: {title: "Food Option"},
-  //     yaxis: {title: "Number of Respondents"}
+  // y vals = otu_ids
+  //     xaxis: {title: "Sample Values"},
+  //     yaxis: {title: "Otu Ids"}
 
 // plot the bar chart
 Plotly.newPlot("plotArea", [trace], layout)
@@ -120,6 +119,7 @@ var bubbleLayout = {
 Plotly.newPlot(); 
 });
 }
+
 
 // D3: buildCharts FUNCTION
 
