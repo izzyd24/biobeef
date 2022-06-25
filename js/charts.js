@@ -76,6 +76,7 @@ function buildCharts(sample) {
     // used arrow function AND sliced 0-10 as requested
     var yticks = otuId.slice(0,10).reverse().map(function (a){
     return {a}});
+
     // need to make xticks?
     var xticks = sampleVal.slice(0,10).reverse();
 
@@ -137,25 +138,36 @@ function buildCharts(sample) {
     // 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", [bubbleData], bubbleLayout);   
 
-  // // D3: Gauge chart
-  //   var gaugeData = {
-  //     title: {text: "Belly Button Washing Frequency<br>Scrubs per Week"},
-  //       type: "indicator",
-  //       mode: "gauge+number",
-  //       gauge: {
-  //         axis: {range: [0,10]},
-  //         steps: [
-  //           {range: [0,2], color:"#ea2c2c"},
-  //           {range: [2,4], color:"#ea822c"},
-  //           {range: [4,6], color:"#ee9c00"},
-  //           {range: [6,8], color:"#eecc00"},
-  //           {range: [8,10], color:"#d4ee00"}
-  //         ]
-  //       }
-  //     };
-  //     var gaugeLayout = {
-  //       width: 600, height: 450, margin: {t: 0, b: 0}
-  //     };
-  //     Plotly.newPlot("gauge", [gaugeData], gaugeLayout);
-  //   });
-  // };
+  // D3: Gauge chart
+  // create var to filter metadata array for obj id matches id # in buildCharts
+    var metadata =data.metadata;
+    var arrayG = metadata.filter(metaObj.id == sample);
+    var resultG = arrayG[0];
+    var wfreqs = resultG.wfreq;
+
+    // create the trace 
+    var gaugeData = {
+      title: {text: "<b> Belly Button Washing Frequency </b> <br></br> Scrubs Per Week"},
+      value: wfreqs,
+      type: "indicator",
+      mode: "gauge+number",
+      gauge: {
+        axis: {range: [0,10]},
+        bar: {color: "black"},
+        steps: [
+          {range: [0,2], color:"red"},
+          {range: [2,4], color:"orange"},
+          {range: [4,6], color:"yellow"},
+          {range: [6,8], color:"green"},
+          {range: [8,10], color:"blue"}
+        ]
+      }
+    };
+    var traceG = {gaugeData};
+    // create var to hold 1st sample in array
+    var gaugeLayout = {
+      automargin: true
+      };
+    Plotly.newPlot("gauge", [traceG], gaugeLayout);
+  });
+};
