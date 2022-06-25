@@ -102,7 +102,7 @@ function buildCharts(sample) {
 
     // 9. Create the layout for the bar chart. 
     var barLayout = {
-    title: "Top Ten Bacteria Cultures Found",
+    title: {text: "<b> Top Ten Bacteria Cultures Found </b> <br></br>"},
     //x vals = sample_values
     //y vals = otu_ids
     xaxis: {title: "Sample Values"},
@@ -128,7 +128,7 @@ function buildCharts(sample) {
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
-      title: "Bacteria Cultures Per Sample",
+      title: {text: "<b> Bacteria Cultures Per Sample </b> <br></br>"},
       xaxis: {title: "OTU ID"},
       // showlegend or use hovermode??
       //Documentation: https://plotly.com/javascript/bubble-charts/#hover-text-on-bubble-charts
