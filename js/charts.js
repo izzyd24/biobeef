@@ -77,7 +77,9 @@ function buildCharts(sample) {
     // so the otu_ids with the most bacteria are last. 
     // used arrow function AND sliced 0-10 as requested
     var yticks = otuId.slice(0,10).reverse().map(function(a){
-    return {a}});
+      // equivalent of toString
+    return `${a}`
+  });
 
     // need to make xticks?
     var xticks = sampleVal.slice(0,10).reverse();
@@ -87,6 +89,7 @@ function buildCharts(sample) {
 
     // 8. Create the trace for the bar chart. 
     var barData = [{
+      // x must be strings
       x: xticks,
       y: yticks,
       type: 'bar',
@@ -174,6 +177,6 @@ function buildCharts(sample) {
       automargin: true
       };
 
-    Plotly.newPlot("gauge", dataG, gaugeLayout);
+    Plotly.newPlot("gauge", [dataG], gaugeLayout);
   });
 };
