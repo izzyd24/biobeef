@@ -56,13 +56,15 @@ function buildMetadata(sample) {
 // D1: buildCharts FUNCTION
 // 1. Create the function.
 function buildCharts(sample) {
+  //console.log(sample);
 // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("js/samples.json").then((data) => {
     // 3. Create a variable that holds the samples array. 
-    var samplesHolder = data.samplesHolder; 
+    var samples = data.samples; 
+    console.log(data);
     // 4. Create a variable that filters the samples for the object with the desired sample number
     // using filter through arrow function
-    var sampleObjHolder = samplesHolder.filter(sampleObj => sampleObj.id == sample);
+    var sampleObjHolder = samples.filter(sampleObj => sampleObj.id == sample);
     // 5. Create a variable that holds the first sample in the array.
     var results = sampleObjHolder[0];
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
@@ -114,8 +116,8 @@ function buildCharts(sample) {
       text: otuLabel,
       mode: 'markers',
       marker: {
-        size: sampleVals,
-        color: otuIDs,
+        size: sampleVal,
+        color: otuId,
         // documentation: https://plotly.com/javascript/colorscales/
         colorscale: 'Picnic'
       }
@@ -141,7 +143,7 @@ function buildCharts(sample) {
   // D3: Gauge chart
   // create var to filter metadata array for obj id matches id # in buildCharts
     var metadata =data.metadata;
-    var arrayG = metadata.filter(metaObj.id == sample);
+    var arrayG = metadata.filter(metaObj => metaObj.id == sample);
     var resultG = arrayG[0];
     var wfreqs = resultG.wfreq;
 
