@@ -60,23 +60,24 @@ d3.json("samples.json").then((data) => {
 
 
 // 3. Create a variable that holds the samples array. 
-const sampleArrayHolder = 
+const sampleArrayHolder = sample.something; 
 
 // 4. Create a variable that filters the samples for the object with the desired sample number.
-
+const sampleObjHolder = 
 
 // 5. Create a variable that holds the first sample in the array.
-
+const sampleArrayOne =
 
 
 // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-
+const otuId = 
+const otuLabel =
+const sampleVal = 
 
 
 // 7. Create the yticks for the bar chart.
 // Hint: Get the the top 10 otu_ids and map them in descending order  
 // so the otu_ids with the most bacteria are last. 
-
 
 // var yticks = 
 
@@ -88,7 +89,12 @@ const sampleArrayHolder =
 // ];
 // 9. Create the layout for the bar chart. 
 // var barLayout = {
-     
+  // title: "Luncheon Survey",
+  //     xaxis: {title: "Food Option"},
+  //     yaxis: {title: "Number of Respondents"}
+
+// plot the bar chart
+Plotly.newPlot("plotArea", [yticks], layout)
 
 // };
 
