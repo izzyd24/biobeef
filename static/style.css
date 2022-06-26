@@ -10,10 +10,11 @@ and the three charts should be working according to their requirements
 + ...
 When a sample is selected, the dashboard should display the data
 in the panel and all three charts according to their requirements
+https://stackoverflow.com/questions/22000754/responsive-bootstrap-jumbotron-background-image
 */
 
 body {
-    color: #000000;
+    color: #0e0a0a;
     background-color: rgb(241, 237, 237);
 }
  
@@ -23,7 +24,14 @@ body {
 }  
 
 .jumbotron {
-    background-image: url("static/bacteria.jpg");
-    background-size: 100% 100%;
-    text-align: center;
+    background-image: url("bacteria.jpg");
+    background-size: cover;
+    
+}
+.jumbotron h1 {
+    color: rgb(237, 241, 241);
+
+}
+.jumbotron p {
+    color: rgb(241, 237, 237);
 }
